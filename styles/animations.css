@@ -7,17 +7,6 @@
 /* 
   Анимация для стрелки у неактивного пункта меню 
 */
-@keyframes arrow {
-  /* Начальное положение */
-  from {
-    transform: translateX(0);
-  }
-
-  /* Конечное положение (сдвиг влево) */
-  to {
-    transform: translateX(-4px);
-  }
-}
 
 /* 
   Стили для иконки "лайк" в активном состоянии (когда лайк поставлен)
@@ -115,6 +104,7 @@
   transition-property: fill;
   transition-duration: 0.3s;
   transition-timing-function: linear;
+  transition-delay: 0.03s;
 }
 
 /* 
@@ -126,7 +116,6 @@
   fill: var(--border-color);
   transition-property: fill;
   transition-duration: 0.3s;
-  transition-delay: 0.05s;
   transition-timing-function: linear;
 }
 
@@ -135,7 +124,6 @@
   fill: var(--like-color);
   transition-property: fill;
   transition-duration: 0.3s;
-  transition-delay: 0.05s;
   transition-timing-function: linear;
 }
 
@@ -145,7 +133,6 @@
   fill: transparent;
   transition-property: fill;
   transition-duration: 0.3s;
-  transition-delay: 0.03s;
   transition-timing-function: linear;
 }
 
@@ -155,6 +142,7 @@
   transition-property: fill;
   transition-duration: 0.3s;
   transition-timing-function: linear;
+  transition-delay: 0.05s;
 }
 
 /* При нажатии - основное тело заполняется цветом лайка */
@@ -163,6 +151,7 @@
   transition-property: fill;
   transition-duration: 0.3s;
   transition-timing-function: linear;
+  transition-delay: 0.05s;
 }
 
 
@@ -175,8 +164,8 @@
   fill: var(--like-color);
   transition-property: fill;
   transition-duration: 0.3s;
-  transition-delay: 0.03s;
   transition-timing-function: linear;
+  transition-delay: 0.05s;
 }
 
 /* Заливка ядра */
@@ -184,7 +173,6 @@
   fill: var(--like-color);
   transition-property: fill;
   transition-duration: 0.3s;
-  transition-delay: 0.05s;
   transition-timing-function: linear;
 }
 
@@ -196,3 +184,4 @@
   transition-delay: 0.06s;
   transition-timing-function: linear;
 }
+

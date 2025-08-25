@@ -83,8 +83,6 @@
 
 /* --- ЗАГОЛОВОК ПЕРВОГО УРОВНЯ В ШАПКЕ --- */
 .header__title {
-  /* Изменяем порядок отображения, чтобы заголовок был под подзаголовком */
-  order: 2;
   /* Акцентный шрифт */
   font-family: var(--font-accent, sans-serif);
   /* Размер шрифта заголовка */
@@ -103,8 +101,6 @@
 
 /* --- ПОДЗАГОЛОВОК В ШАПКЕ --- */
 .header__subtitle {
-  /* Отображается перед основным заголовком */
-  order: 1;
   /* Акцентный шрифт */
   font-family: var(--font-accent, sans-serif);
   /* Размер шрифта подзаголовка */
@@ -121,126 +117,6 @@
   margin-block-end: 15px;
 }
 
-/* --- МЕНЮ ВЫБОРА ТЕМЫ В ШАПКЕ --- */
-.header__theme-menu {
-  /* Отображается последним в шапке */
-  order: 3;
-  /* Внешний отступ слева */
-  margin-inline-start: 15px;
-}
-
-/* --- СПИСОК В МЕНЮ ТЕМЫ --- */
-.theme-menu__list {
-  /* Используем flexbox */
-  display: flex;
-  /* Элементы располагаются в колонку */
-  flex-direction: column;
-  /* Промежуток между элементами списка */
-  gap: 7px;
-}
-
-/* --- ЭЛЕМЕНТ СПИСКА МЕНЮ ТЕМЫ --- */
-.theme-menu__item {
-  /* Позиционирование для псевдоэлементов */
-  position: relative;
-}
-
-/* --- КНОПКА В МЕНЮ ТЕМЫ --- */
-.theme-menu__button {
-  /* Нормальная высота строки */
-  line-height: 1;
-  /* Текст в верхнем регистре */
-  text-transform: uppercase;
-  /* Плавный переход для анимаций */
-  transition: ease 0.3s;
-  /* Позиционирование для псевдоэлементов */
-  position: relative;
-}
-
-/* --- ПСЕВДОЭЛЕМЕНТ ДЛЯ ПОДЧЕРКИВАНИЯ КНОПКИ --- */
-.theme-menu__button::after {
-  /* Обязательное свойство для псевдоэлементов */
-  content: '';
-  /* Изначальная прозрачность */
-  opacity: 0.6;
-  /* Абсолютное позиционирование */
-  position: absolute;
-  /* Расположение справа */
-  right: 0;
-  /* Расположение под текстом */
-  bottom: -3px;
-  /* Ширина 100% от родителя */
-  width: 100%;
-  /* Высота подчеркивания */
-  height: 2px;
-  /* Цвет подчеркивания */
-  background-color: var(--text-color-accent, black);
-  /* Плавный переход */
-  transition: ease 0.3s;
-  /* Точка трансформации слева */
-  transform-origin: left;
-  /* Изначально скрыто (масштаб по X = 0) */
-  transform: scaleX(0);
-}
-
-
-/* --- СТИЛИ ПРИ НАВЕДЕНИИ НА КНОПКУ МЕНЮ --- */
-.theme-menu__button:hover {
-  /* Уменьшаем прозрачность */
-  opacity: 0.6;
-}
-
-/* --- СТИЛИ ПРИ ФОКУСЕ НА КНОПКЕ МЕНЮ --- */
-.theme-menu__button:focus {
-  /* Убираем стандартное выделение */
-  outline: none;
-  /* Уменьшаем прозрачность */
-  opacity: 0.6;
-}
-
-/* --- СТИЛИ ПРИ ФОКУСЕ (VIDIBLE) НА КНОПКЕ МЕНЮ --- */
-.theme-menu__button:focus-visible {
-  /* Уменьшаем прозрачность */
-  opacity: 0.6;
-}
-
-/* --- ПОДЧЕРКИВАНИЕ ПРИ ФОКУСЕ (VISIBLE) --- */
-.theme-menu__button:focus-visible::after {
-  /* Показываем линию (масштаб по X = 1) */
-  transform: scaleX(1);
-}
-
-/* --- СТИЛИ ДЛЯ НЕАКТИВНОЙ КНОПКИ МЕНЮ --- */
-.theme-menu__button:disabled {
-  /* Отключаем события мыши */
-  pointer-events: none;
-  /* Уменьшаем прозрачность */
-  opacity: 0.6;
-}
-
-/* --- ПСЕВДОЭЛЕМЕНТ "СТРЕЛКА" У НЕАКТИВНОЙ КНОПКИ --- */
-.theme-menu__button:disabled::before {
-  /* Отключаем события мыши */
-  pointer-events: none;
-  /* Прозрачность */
-  opacity: 0.6;
-  /* Символ стрелки */
-  content: '▶';
-  /* Абсолютное позиционирование */
-  position: absolute;
-  /* Сдвиг влево */
-  left: -20px;
-  /* Название анимации */
-  animation-name: arrow;
-  /* Длительность анимации */
-  animation-duration: 0.5s;
-  /* Бесконечное повторение */
-  animation-iteration-count: infinite;
-  /* Временная функция анимации */
-  animation-timing-function: ease-in-out;
-  /* Направление анимации (туда-обратно) */
-  animation-direction: alternate;
-}
 
 /* --- ОСНОВНОЕ СОДЕРЖИМОЕ СТРАНИЦЫ --- */
 .main {
@@ -401,6 +277,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  justify-content: center;
+  align-items: center;
+  /* Плавный переход */
+  transition: 0.3s ease;
 }
 
 /* --- ФОКУС НА КНОПКЕ-ИКОНКЕ --- */
@@ -413,8 +293,6 @@
 .card__icon-button:focus-visible {
   /* Добавляем рамку при фокусе для доступности */
   border: 2px solid var(--border-color, black);
-  /* Плавный переход */
-  transition: 0.3s ease;
 }
 
 /* --- ИКОНКА "ЛАЙК" --- */
@@ -549,7 +427,7 @@
 /* --- ФОН ЗА МОДАЛЬНЫМ ОКНОМ --- */
 .dialog::backdrop {
   /* Полупрозрачный черный фон */
-  background-color: rgb(0 0 0 / 0.7);
+  background-color: rgb(0 0 0 / 0.75);
 }
 
 /* --- КОНТЕЙНЕР С КОНТЕНТОМ В МОДАЛЬНОМ ОКНЕ --- */

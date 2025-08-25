@@ -34,18 +34,18 @@
   --heading-font-weight: 700;
   /* Жирность основного текста */
   --text-font-weight: 400;
-  /* Первый цвет для фона-градиента */
-  --c1: #d3d3d3;
-  /* Второй цвет для фона-градиента */
-  --c2: #e7e7e7;
-  /* Третий цвет для фона-градиента */
-  --c3: #1a1a1a;
+  /* Цвет для линий сетки в градиенте */
+  --grid-color: #d3d3d3;
+  /* Начальный цвет для основного градиента */
+  --gradient-start: #e7e7e7;
+  /* Конечный цвет для основного градиента */
+  --gradient-end: #1a1a1a;
   /* Комбинированный градиент фона */
   --background-image-gradient: repeating-linear-gradient(
       90deg,
-      var(--c1) 0 2px,
+      var(--grid-color) 0 2px,
       transparent 2px 4px
     ),
-    repeating-linear-gradient(0deg, var(--c1) 0 2px, transparent 2px 4px),
-    linear-gradient(var(--c2), var(--c3));
+    repeating-linear-gradient(0deg, var(--grid-color) 0 2px, transparent 2px 4px),
+    linear-gradient(var(--gradient-start), var(--gradient-end));
 }
