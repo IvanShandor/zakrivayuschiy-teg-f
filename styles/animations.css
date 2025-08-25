@@ -1,11 +1,198 @@
-/* Опишите в этом файле все keyframes для проекта и стили анимаций иконки Like.
-
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
-
+/*
+  ==============================================
+  ФАЙЛ С АНИМАЦИЯМИ
+  ==============================================
 */
+
+/* 
+  Анимация для стрелки у неактивного пункта меню 
+*/
+@keyframes arrow {
+  /* Начальное положение */
+  from {
+    transform: translateX(0);
+  }
+
+  /* Конечное положение (сдвиг влево) */
+  to {
+    transform: translateX(-4px);
+  }
+}
+
+/* 
+  Стили для иконки "лайк" в активном состоянии (когда лайк поставлен)
+*/
+.like-icon.is-liked .heart {
+  /* Название анимации пульсации */
+  animation-name: heart;
+  /* Задержка перед началом анимации */
+  animation-delay: 0.1s;
+  /* Длительность анимации */
+  animation-duration: 0.3s;
+  /* Временная функция - анимация ускоряется к концу */
+  animation-timing-function: ease-in;
+  /* Центр трансформации - центр элемента */
+  transform-origin: center;
+}
+
+/* 
+  Ключевые кадры для анимации пульсации сердца
+*/
+@keyframes heart {
+  /* Начальное состояние (нормальный размер) */
+  from {
+    transform: scale(1);
+  }
+
+  /* Конечное состояние (увеличенный размер) */
+  to {
+    transform: scale(1.5);
+  }
+}
+
+/* 
+  Изначально скрываем искры
+*/
+.sparks {
+  opacity: 0;
+}
+
+/* 
+  Анимация для искр при поставленном лайке
+*/
+.like-icon.is-liked .sparks {
+  /* Название анимации появления искр */
+  animation-name: sparks;
+  /* Задержка перед началом */
+  animation-delay: 0.3s;
+  /* Длительность анимации */
+  animation-duration: 0.3s;
+  /* Временная функция */
+  animation-timing-function: ease-in;
+  /* Центр трансформации */
+  transform-origin: center;
+}
+
+/* 
+  Ключевые кадры для анимации искр
+*/
+@keyframes sparks {
+  /* Начальное состояние (невидимы) */
+  from {
+    opacity: 0;
+  }
+
+  /* В середине анимации - полностью видимы */
+  50% {
+    opacity: 1;
+  }
+
+  /* Конечное состояние (снова невидимы) */
+  to {
+    opacity: 0;
+  }
+}
+
+/* 
+  --- СТИЛИ ДЛЯ ЧАСТЕЙ SVG-ИКОНКИ "СЕРДЦЕ" ---
+*/
+
+/* Внешний контур сердца */
+.contour {
+  /* Цвет заливки из переменной */
+  fill: var(--border-color);
+  /* Плавный переход для свойства fill */
+  transition-property: fill;
+  transition-duration: 0.1s;
+  transition-timing-function: linear;
+}
+
+/* Ядро (внутренняя часть) сердца */
+.core {
+  /* Изначально прозрачное */
+  fill: transparent;
+  /* Плавный переход для заливки */
+  transition-property: fill;
+  transition-duration: 0.3s;
+  transition-timing-function: linear;
+}
+
+/* 
+  --- ЭФФЕКТЫ ПРИ ВЗАИМОДЕЙСТВИИ С СЕРДЦЕМ --- 
+*/
+
+/* При наведении на иконку - ядро заполняется цветом */
+.heart:hover .core {
+  fill: var(--border-color);
+  transition-property: fill;
+  transition-duration: 0.3s;
+  transition-delay: 0.05s;
+  transition-timing-function: linear;
+}
+
+/* При нажатии (активном состоянии) - ядро и основное тело заполняются цветом лайка */
+.heart:active .core {
+  fill: var(--like-color);
+  transition-property: fill;
+  transition-duration: 0.3s;
+  transition-delay: 0.05s;
+  transition-timing-function: linear;
+}
+
+/* Основное тело сердца */
+.main-body {
+  /* Изначально прозрачное */
+  fill: transparent;
+  transition-property: fill;
+  transition-duration: 0.3s;
+  transition-delay: 0.03s;
+  transition-timing-function: linear;
+}
+
+/* При наведении - основное тело заполняется цветом */
+.heart:hover .main-body {
+  fill: var(--border-color);
+  transition-property: fill;
+  transition-duration: 0.3s;
+  transition-timing-function: linear;
+}
+
+/* При нажатии - основное тело заполняется цветом лайка */
+.heart:active .main-body {
+  fill: var(--like-color);
+  transition-property: fill;
+  transition-duration: 0.3s;
+  transition-timing-function: linear;
+}
+
+
+/* 
+  --- СТИЛИ ДЛЯ УЖЕ ПОСТАВЛЕННОГО ЛАЙКА --- 
+*/
+
+/* Заливка основного тела */
+.like-icon.is-liked .main-body {
+  fill: var(--like-color);
+  transition-property: fill;
+  transition-duration: 0.3s;
+  transition-delay: 0.03s;
+  transition-timing-function: linear;
+}
+
+/* Заливка ядра */
+.like-icon.is-liked .core {
+  fill: var(--like-color);
+  transition-property: fill;
+  transition-duration: 0.3s;
+  transition-delay: 0.05s;
+  transition-timing-function: linear;
+}
+
+/* Заливка контура */
+.like-icon.is-liked .contour {
+  fill: var(--like-color);
+  transition-property: fill;
+  transition-duration: 0.3s;
+  transition-delay: 0.06s;
+  transition-timing-function: linear;
+}

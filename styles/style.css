@@ -1,16 +1,649 @@
-/* Здесь вы напишете основную часть стилей страницы.
-
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
-
-*/
-
+/* --- ОБЩИЕ СТИЛИ ДЛЯ СТРАНИЦЫ --- */
 .page {
+  /* Минимальная высота блока страницы равна 100% высоты области просмотра */
+  min-block-size: 100dvb; 
+  /* Минимальная ширина страницы */
   min-inline-size: 320px;
-  min-block-size: 100dvb;
+  /* Внутренний отступ сверху */
+  padding-block-start: 99px;
+  /* Цвет фона страницы, с использованием переменной для возможности смены темы */
+  background-color: var(--background-color, white);
+  /* Градиентный фон страницы */
+  background-image: var(--background-image-gradient);
+  /* Фиксированный фон, чтобы он не прокручивался вместе с контентом */
+  background-attachment: fixed;
+  /* Масштабирование фона для полного покрытия страницы */
+  background-size: cover;
+  /* Основной шрифт на странице */
+  font-family: var(--font, sans-serif);
+  /* Цвет текста на странице */
+  color: var(--text-color, black);
+  /* Размер основного текста */
+  font-size: var(--text-size, 18px);
+  /* Нормальный стиль шрифта */
+  font-style: normal;
+  /* Настройка жирности шрифта через вариативные шрифты */
+  font-variation-settings: 'wght' var(--text-font-weight, 400);
+}
+
+/* --- ЦЕНТРИРУЮЩИЙ КОНТЕЙНЕР --- */
+.container {
+  /* Максимальная ширина контейнера, чтобы контент не растягивался на всю ширину экрана на больших мониторах */
+  max-width: 700px;
+  /* Автоматические отступы по бокам для центрирования контейнера */
+  margin: 0 auto;
+}
+
+/* --- ОБЩИЕ СТИЛИ ДЛЯ КНОПОК --- */
+.button {
+  /* Акцентный шрифт для кнопок */
+  font-family: var(--font-accent, sans-serif);
+  /* Размер шрифта для кнопок в меню */
+  font-size: var(--text-menu-size, 14px);
+  /* Нормальный стиль шрифта */
+  font-style: normal;
+  /* Нормальная жирность шрифта */
+  font-weight: 400;
+  /* Убираем стандартную рамку */
+  border: none;
+  /* Убираем стандартные отступы */
+  padding: 0;
+  /* Прозрачный фон */
+  background-color: transparent;
+  /* Курсор в виде указателя при наведении */
+  cursor: pointer;
+}
+
+/* --- СТИЛИ ДЛЯ ЭЛЕМЕНТОВ С РАМКОЙ --- */
+.border {
+  /* Цвет фона для элементов с рамкой */
+  background-color: var(--background-color, white);
+  /* Рамка толщиной 2px с цветом из переменной */
+  border: 2px solid var(--border-color, black);
+}
+
+/* --- СТИЛИ ДЛЯ ШАПКИ САЙТА (HEADER) --- */
+.header {
+  /* Используем flexbox для выравнивания элементов */
+  display: flex;
+  /* Элементы располагаются в колонку */
+  flex-direction: column;
+  /* Выравниваем элементы по центру */
+  align-items: center;
+  /* Боковые отступы */
+  padding-inline-start: 14px;
+  padding-inline-end: 14px;
+  /* Отступ сверху */
+  padding-block-start: 136px;
+  /* Отступ снизу */
+  padding-block-end: 105px;
+  /* Внешний отступ снизу */
+  margin-block-end: 95px;
+}
+
+/* --- ЗАГОЛОВОК ПЕРВОГО УРОВНЯ В ШАПКЕ --- */
+.header__title {
+  /* Изменяем порядок отображения, чтобы заголовок был под подзаголовком */
+  order: 2;
+  /* Акцентный шрифт */
+  font-family: var(--font-accent, sans-serif);
+  /* Размер шрифта заголовка */
+  font-size: var(--title-size);
+  /* Нормальный стиль шрифта */
+  font-style: normal;
+  /* Нормальная жирность */
+  font-weight: 400;
+  /* Нормальная высота строки */
+  line-height: normal;
+  /* Преобразование текста в верхний регистр */
+  text-transform: uppercase;
+  /* Внешний отступ снизу */
+  margin-block-end: 24px;
+}
+
+/* --- ПОДЗАГОЛОВОК В ШАПКЕ --- */
+.header__subtitle {
+  /* Отображается перед основным заголовком */
+  order: 1;
+  /* Акцентный шрифт */
+  font-family: var(--font-accent, sans-serif);
+  /* Размер шрифта подзаголовка */
+  font-size: var(--subtitle-size);
+  /* Нормальный стиль шрифта */
+  font-style: normal;
+  /* Нормальная жирность */
+  font-weight: 400;
+  /* Нормальная высота строки */
+  line-height: normal;
+  /* Преобразование текста в верхний регистр */
+  text-transform: uppercase;
+  /* Внешний отступ снизу */
+  margin-block-end: 15px;
+}
+
+/* --- МЕНЮ ВЫБОРА ТЕМЫ В ШАПКЕ --- */
+.header__theme-menu {
+  /* Отображается последним в шапке */
+  order: 3;
+  /* Внешний отступ слева */
+  margin-inline-start: 15px;
+}
+
+/* --- СПИСОК В МЕНЮ ТЕМЫ --- */
+.theme-menu__list {
+  /* Используем flexbox */
+  display: flex;
+  /* Элементы располагаются в колонку */
+  flex-direction: column;
+  /* Промежуток между элементами списка */
+  gap: 7px;
+}
+
+/* --- ЭЛЕМЕНТ СПИСКА МЕНЮ ТЕМЫ --- */
+.theme-menu__item {
+  /* Позиционирование для псевдоэлементов */
+  position: relative;
+}
+
+/* --- КНОПКА В МЕНЮ ТЕМЫ --- */
+.theme-menu__button {
+  /* Нормальная высота строки */
+  line-height: 1;
+  /* Текст в верхнем регистре */
+  text-transform: uppercase;
+  /* Плавный переход для анимаций */
+  transition: ease 0.3s;
+  /* Позиционирование для псевдоэлементов */
+  position: relative;
+}
+
+/* --- ПСЕВДОЭЛЕМЕНТ ДЛЯ ПОДЧЕРКИВАНИЯ КНОПКИ --- */
+.theme-menu__button::after {
+  /* Обязательное свойство для псевдоэлементов */
+  content: '';
+  /* Изначальная прозрачность */
+  opacity: 0.6;
+  /* Абсолютное позиционирование */
+  position: absolute;
+  /* Расположение справа */
+  right: 0;
+  /* Расположение под текстом */
+  bottom: -3px;
+  /* Ширина 100% от родителя */
+  width: 100%;
+  /* Высота подчеркивания */
+  height: 2px;
+  /* Цвет подчеркивания */
+  background-color: var(--text-color-accent, black);
+  /* Плавный переход */
+  transition: ease 0.3s;
+  /* Точка трансформации слева */
+  transform-origin: left;
+  /* Изначально скрыто (масштаб по X = 0) */
+  transform: scaleX(0);
+}
+
+
+/* --- СТИЛИ ПРИ НАВЕДЕНИИ НА КНОПКУ МЕНЮ --- */
+.theme-menu__button:hover {
+  /* Уменьшаем прозрачность */
+  opacity: 0.6;
+}
+
+/* --- СТИЛИ ПРИ ФОКУСЕ НА КНОПКЕ МЕНЮ --- */
+.theme-menu__button:focus {
+  /* Убираем стандартное выделение */
+  outline: none;
+  /* Уменьшаем прозрачность */
+  opacity: 0.6;
+}
+
+/* --- СТИЛИ ПРИ ФОКУСЕ (VIDIBLE) НА КНОПКЕ МЕНЮ --- */
+.theme-menu__button:focus-visible {
+  /* Уменьшаем прозрачность */
+  opacity: 0.6;
+}
+
+/* --- ПОДЧЕРКИВАНИЕ ПРИ ФОКУСЕ (VISIBLE) --- */
+.theme-menu__button:focus-visible::after {
+  /* Показываем линию (масштаб по X = 1) */
+  transform: scaleX(1);
+}
+
+/* --- СТИЛИ ДЛЯ НЕАКТИВНОЙ КНОПКИ МЕНЮ --- */
+.theme-menu__button:disabled {
+  /* Отключаем события мыши */
+  pointer-events: none;
+  /* Уменьшаем прозрачность */
+  opacity: 0.6;
+}
+
+/* --- ПСЕВДОЭЛЕМЕНТ "СТРЕЛКА" У НЕАКТИВНОЙ КНОПКИ --- */
+.theme-menu__button:disabled::before {
+  /* Отключаем события мыши */
+  pointer-events: none;
+  /* Прозрачность */
+  opacity: 0.6;
+  /* Символ стрелки */
+  content: '▶';
+  /* Абсолютное позиционирование */
+  position: absolute;
+  /* Сдвиг влево */
+  left: -20px;
+  /* Название анимации */
+  animation-name: arrow;
+  /* Длительность анимации */
+  animation-duration: 0.5s;
+  /* Бесконечное повторение */
+  animation-iteration-count: infinite;
+  /* Временная функция анимации */
+  animation-timing-function: ease-in-out;
+  /* Направление анимации (туда-обратно) */
+  animation-direction: alternate;
+}
+
+/* --- ОСНОВНОЕ СОДЕРЖИМОЕ СТРАНИЦЫ --- */
+.main {
+  /* Используем flexbox */
+  display: flex;
+  /* Элементы в колонку */
+  flex-direction: column;
+  /* Промежуток между карточками */
+  row-gap: 47px;
+  /* Внешний отступ снизу */
+  margin-block-end: 105px;
+}
+
+/* --- ЗАГОЛОВОК КАРТОЧКИ --- */
+.card__heading {
+  /* Размер шрифта */
+  font-size: var(--text-size, 18px);
+  /* Жирность шрифта для заголовков */
+  font-variation-settings: 'wght' var(--heading-font-weight, 700);
+  /* Нормальная высота строки */
+  line-height: normal;
+  /* Внутренние отступы */
+  padding: 5px 10px;
+}
+
+/* --- КОНТЕЙНЕР ДЛЯ ИЗОБРАЖЕНИЯ В КАРТОЧКЕ --- */
+.card__image-inner-wrap {
+  /* Позиционирование для дочерних элементов */
+  position: relative;
+  /* Flex-контейнер для центрирования */
+  display: flex;
+  justify-content: center;
+  /* Соотношение сторон 1:1 (квадрат) */
+  aspect-ratio: 1/1;
+  /* Внешний отступ снизу */
+  margin-block-end: 3px;
+  /* Скрываем все, что выходит за пределы контейнера */
+  overflow: hidden;
+}
+
+/* --- ИЗОБРАЖЕНИЕ В КАРТОЧКЕ --- */
+.card__image {
+  /* Максимальная ширина 100% */
+  max-width: 100%;
+  /* Максимальная высота 100% */
+  max-height: 100%;
+  /* Масштабируем изображение с сохранением пропорций, чтобы оно заполнило контейнер */
+  object-fit: cover;
+  /* Центрируем изображение */
+  object-position: center;
+}
+
+/* --- ФИЛЬТРЫ ДЛЯ ИЗОБРАЖЕНИЙ --- */
+.card__image-2 {
+  filter: sepia(0.6) saturate(60%) brightness(80%);
+}
+
+.card__image-3 {
+  filter: saturate(300%);
+}
+
+.card__image-4 {
+  filter: hue-rotate(0.1turn);
+}
+
+.card__image-5 {
+  filter: invert(80%);
+}
+
+.card__image-6 {
+  filter: sepia(0.6) contrast(60%);
+}
+
+.card__image-7 {
+  filter: blur(15px);
+}
+
+.card__image-8 {
+  filter: invert(80%) hue-rotate(0.7turn) brightness(60%);
+}
+
+/* --- НАДПИСЬ ПОВЕРХ ИЗОБРАЖЕНИЯ --- */
+.lable {
+  /* Абсолютное позиционирование */
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  /* Акцентный шрифт */
+  font-family: var(--font-accent, sans-serif);
+  /* Размер шрифта */
+  font-size: var(--text-menu-size, 14px);
+  /* Текст в верхнем регистре */
+  text-transform: uppercase;
+  /* Прозрачность */
+  opacity: 0.5;
+  /* Режим наложения для лучшей читаемости на разном фоне */
+  mix-blend-mode: hard-light;
+  /* Тень для текста для лучшей читаемости */
+  text-shadow:
+    1px 1px var(--text-color-shadow, white),
+    -1px -1px var(--text-color-shadow, white),
+    -1px 1px var(--text-color-shadow, white),
+    1px -1px var(--text-color-shadow, white);
+}
+
+/* --- АЛЬТЕРНАТИВНАЯ ОБВОДКА ТЕКСТА ДЛЯ ПОДДЕРЖИВАЮЩИХ БРАУЗЕРОВ --- */
+@supports (
+  (text-stroke: 1px var(--text-color-shadow)) or
+    (-webkit-text-stroke: 1px var(--text-color-shadow))
+) {
+  /* Если браузер поддерживает text-stroke, используем его вместо тени */
+  .lable {
+    -webkit-text-stroke: 1px var(--text-color-shadow);
+    text-stroke: 1px var(--text-color-shadow);
+    text-shadow: none; /* Убираем тень, т.к. есть обводка */
+  }
+}
+
+/* --- КОНТЕЙНЕР ДЛЯ ТЕКСТА В КАРТОЧКЕ --- */
+.card__text-inner-wrap {
+  /* Внутренние отступы */
+  padding: 25px;
+}
+
+/* --- ТЕКСТ В КАРТОЧКЕ --- */
+.card__text {
+  /* Внешний отступ снизу */
+  margin-block-end: 27px;
+  /* Высота строки для лучшей читаемости */
+  line-height: 1.17;
+}
+
+/* --- ПОСЛЕДНИЙ ПАРАГРАФ ТЕКСТА В КАРТОЧКЕ --- */
+.card__text:last-of-type {
+  /* Уменьшенный отступ снизу у последнего параграфа */
+  margin-block-end: 25px;
+}
+
+/* --- КОНТЕЙНЕР ДЛЯ КНОПОК В КАРТОЧКЕ --- */
+.card__button-inner-wrap {
+  /* Используем flexbox */
+  display: flex;
+  /* Выравниваем кнопки в конец контейнера */
+  justify-content: flex-end;
+  /* Выравниваем по центру по вертикали */
+  align-items: center;
+  /* Промежуток между кнопками */
+  gap: 7px;
+}
+
+/* --- КНОПКА-ИКОНКА В КАРТОЧКЕ --- */
+.card__icon-button {
+  /* Прозрачная рамка для состояния фокуса */
+  border: 2px solid transparent;
+  width: 38px;
+  height: 38px;
+  /* Flex для центрирования иконки внутри */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- ФОКУС НА КНОПКЕ-ИКОНКЕ --- */
+.card__icon-button:focus {
+  /* Убираем стандартный контур */
+  outline: none;
+}
+
+/* --- ВИДИМЫЙ ФОКУС НА КНОПКЕ-ИКОНКЕ --- */
+.card__icon-button:focus-visible {
+  /* Добавляем рамку при фокусе для доступности */
+  border: 2px solid var(--border-color, black);
+  /* Плавный переход */
+  transition: 0.3s ease;
+}
+
+/* --- ИКОНКА "ЛАЙК" --- */
+.like-icon {
+  /* Курсор-указатель */
+  cursor: pointer;
+}
+
+/* --- КНОПКА "ЛАЙК" С ТЕКСТОМ --- */
+.card__like-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* Для псевдоэлемента */
+}
+
+/* --- АНИМАЦИЯ ФОНА ДЛЯ КНОПКИ "ЛАЙК" (ПСЕВДОЭЛЕМЕНТ) --- */
+.card__like-button::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--border-color, black);
+  transition: 0.5s ease-in-out;
+  transform-origin: left;
+  transform: scaleX(0); /* Изначально скрыт */
+}
+
+/* --- АНИМАЦИЯ ФОНА ПРИ НАВЕДЕНИИ --- */
+.card__like-button:hover::before {
+  transform: scale(1); /* Показывается при наведении */
+}
+
+/* --- ФОКУС НА КНОПКЕ "ЛАЙК" --- */
+.card__like-button:focus {
+  outline: none;
+}
+
+/* --- ВИДИМЫЙ ФОКУС НА КНОПКЕ "ЛАЙК" --- */
+.card__like-button:focus-visible {
+  /* Добавляем тень для выделения фокуса */
+  box-shadow: 2px 2px var(--border-color, black);
+  transition: ease 0.3s;
+}
+
+/* --- ТЕКСТ ВНУТРИ КНОПКИ "ЛАЙК" --- */
+.card__like-button-text {
+  width: 130px;
+  height: 38px;
+  line-height: 0.9;
+}
+
+/* --- ТЕКСТ ВНУТРИ ВСЕХ КНОПОК С АНИМАЦИЕЙ ФОНА --- */
+.button__text {
+  /* Цвет текста из переменной (обычно контрастный фону) */
+  color: var(--color-span-button, white);
+  /* Режим наложения для инвертирования цвета текста при появлении фона */
+  mix-blend-mode: difference;
+}
+
+/* --- КНОПКА "СОХРАНИТЬ" --- */
+.main__save-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  width: 337px;
+  min-height: 53px;
+  margin: 0 auto; /* Центрирование */
+  overflow: hidden; /* Скрываем анимацию за пределами кнопки */
+  padding: 10px;
+}
+
+/* --- АНИМАЦИЯ ФОНА ДЛЯ КНОПКИ "СОХРАНИТЬ" (ПСЕВДОЭЛЕМЕНТ) --- */
+.main__save-button::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--border-color, black);
+  transition: 0.5s ease-in-out;
+  transform: translateX(-100%); /* Изначально скрыт слева */
+}
+
+/* --- АНИМАЦИЯ ФОНА ПРИ НАВЕДЕНИИ --- */
+.main__save-button:hover::before {
+  transform: translateX(0%); /* Выезжает, заполняя кнопку */
+}
+
+/* --- ФОКУС НА КНОПКЕ "СОХРАНИТЬ" --- */
+.main__save-button:focus {
+  outline: none;
+}
+
+/* --- ВИДИМЫЙ ФОКУС НА КНОПКЕ "СОХРАНИТЬ" --- */
+.main__save-button:focus-visible {
+  box-shadow: 2px 2px var(--border-color, black);
+  transition: ease 0.3s;
+}
+
+/* --- SVG ИКОНКА ВНУТРИ КНОПКИ --- */
+.button__svg {
+  width: 21px;
+  height: 21px;
+  color: var(--color-span-button, white);
+  mix-blend-mode: difference; /* Для инверсии цвета */
+}
+
+/* --- СТИЛИ ДЛЯ МОДАЛЬНОГО ОКНА (DIALOG) --- */
+.dialog {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  position: fixed; /* Фиксированное позиционирование поверх всего контента */
+  inset: 0; /* Растягиваем на весь экран */
+  padding: 30px;
+  color: var(--text-color, black);
+}
+
+/* --- СКРЫТОЕ МОДАЛЬНОЕ ОКНО --- */
+.dialog:not([open]) {
+  /* Отключаем взаимодействие и делаем невидимым */
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* --- ФОН ЗА МОДАЛЬНЫМ ОКНОМ --- */
+.dialog::backdrop {
+  /* Полупрозрачный черный фон */
+  background-color: rgb(0 0 0 / 0.7);
+}
+
+/* --- КОНТЕЙНЕР С КОНТЕНТОМ В МОДАЛЬНОМ ОКНЕ --- */
+.box {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-family: var(--font-accent, sans-serif);
+  font-size: var(--text-menu-size, 14px);
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.box p {
+  /* Ограничиваем максимальную ширину текста */
+  max-width: 234px;
+}
+
+/* --- SVG ИКОНКА В МОДАЛЬНОМ ОКНЕ --- */
+.dialog__svg {
+  width: 40px;
+  height: 40px;
+}
+
+/* --- ФОРМА В МОДАЛЬНОМ ОКНЕ --- */
+.dialog__form {
+  display: flex;
+}
+
+/* --- КНОПКА В МОДАЛЬНОМ ОКНЕ --- */
+.dialog__button {
+  /* Растягивается на доступную ширину */
+  flex-grow: 1;
+  text-transform: uppercase;
+  padding: 10px;
+  position: relative; /* Для псевдоэлемента */
+}
+
+/* --- АНИМАЦИЯ ФОНА ДЛЯ КНОПКИ В ДИАЛОГЕ (ПСЕВДОЭЛЕМЕНТ) --- */
+.dialog__button::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--border-color, black);
+  transition: 0.5s ease-in-out;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+/* --- АНИМАЦИЯ ФОНА ПРИ НАВЕДЕНИИ --- */
+.dialog__button:hover::before {
+  transform: scale(1);
+}
+
+/* --- ФОКУС НА КНОПКЕ В ДИАЛОГЕ --- */
+.dialog__button:focus {
+  outline: none;
+}
+
+/* --- ВИДИМЫЙ ФОКУС НА КНОПКЕ В ДИАЛОГЕ --- */
+.dialog__button:focus-visible {
+  box-shadow: 2px 2px var(--border-color, black);
+  transition: ease 0.3s;
+}
+
+/* --- АДАПТИВНЫЕ СТИЛИ ДЛЯ МАЛЕНЬКИХ ЭКРАНОВ --- */
+@media (width < 450px) {
+  /* Уменьшаем отступ в шапке */
+  .header {
+    padding-block-start: 120px;
+  }
+
+  .card__text {
+    padding-right: 2px;
+  }
+
+  /* Адаптация кнопки "Сохранить" */
+  .main__save-button {
+    width: 308px;
+    min-height: 84px;
+    flex-direction: column; /* Элементы в колонку */
+  }
+
+  /* Увеличиваем иконку в кнопке */
+  .button__svg {
+    width: 27px;
+    height: 27px;
+  }
+
+  /* Уменьшаем максимальную ширину текста в диалоге */
+  .box p {
+    max-width: 198px;
+  }
 }
